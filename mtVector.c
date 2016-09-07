@@ -1,37 +1,27 @@
 /**
  * Some basic vector calculations.
- * All operations are prefixed with 'mt' to avoid name clashes and get a
+ * All operations are prefixed with 'mt' to avoid name clashes and get an
  * attempt for a unique prefix.
  *
  * @author Maurice Tollmien
  */
 
 #include <stdio.h>
-//#include <stddef.h>
-//#include <stdlib.h>
 #include <math.h>
 
-//#include "types.h"
-#include <GL/gl.h>
 #include "mtVector.h"
 
-
 /**
- * Printet einen Vector aus.
+ * Prints a vector to stdout as: [0.1/0.2/0.3]
  */
 void mtPrintVector (MTVec3D a)
 {
     int i;
-    printf("printVector:\n");
     printf("[%.1f/%.1f/%.1f]\n", a.x, a.y, a.z);
 }
 
 /**
- * Konvertierungsfunktion,
- * wandelt drei Koordinaten in den dazugehörigen Vektor um
- * @param x
- * @param y
- * @param z
+ * Creates a new vector from three given values.
  */
 MTVec3D mtToVector3D(float x, float y, float z)
 {
@@ -43,9 +33,7 @@ MTVec3D mtToVector3D(float x, float y, float z)
 }
 
 /**
- * Berechnet die Länge es Vektors
- * @param v
- *@return float
+ * Calculates the length of a given vector.
  */
 float mtVectorLength3D(MTVec3D vector)
 {
@@ -55,9 +43,7 @@ float mtVectorLength3D(MTVec3D vector)
 }
 
 /**
- * Normiert eine Vektor
- * @param v der zu normierende Vektor
- * @return der normierte Vektor
+ * Normalises a vector and returnes a new, normalised one.
  */
 MTVec3D mtNormVector3D(MTVec3D vector)
 {
@@ -68,10 +54,7 @@ MTVec3D mtNormVector3D(MTVec3D vector)
 }
 
 /**
- * Berechnet das Kreuzprodukt zweier Vektoren
- * @param
- * @param
- * @return
+ * Computes the cross-product of the vectors axb and returnes a new vector.
  */
 MTVec3D mtCrossProduct3D(MTVec3D a, MTVec3D b)
 {
@@ -82,7 +65,7 @@ MTVec3D mtCrossProduct3D(MTVec3D a, MTVec3D b)
 }
 
 /**
- * Multipliziert einen Vektor mit einem Skalar.
+ * Multiplies vector with scalar and returnes new vector.
  */
 MTVec3D mtMultiplyVectorScalar (MTVec3D a, double s)
 {
@@ -93,13 +76,16 @@ MTVec3D mtMultiplyVectorScalar (MTVec3D a, double s)
     return res;
 }
 
+/**
+ * Calculates the scalar (outer) product of the given vectors.
+ */
 double mtScalarProduct (MTVec3D a, MTVec3D b)
 {
     return a.x*b.x + a.y*b.y + a.z*b.z;
 }
 
 /**
- * Zieht b von a ab, also: a-b
+ * Subtracts vector b from vector a and returnes new vector.
  */
 MTVec3D mtSubtractVectorVector (MTVec3D a, MTVec3D b)
 {
@@ -111,7 +97,7 @@ MTVec3D mtSubtractVectorVector (MTVec3D a, MTVec3D b)
 }
 
 /**
- * Teilt den Vector a durch s.
+ * Divides all values of the vector by s and returnes new vector.
  */
 MTVec3D mtDivideVectorScalar (MTVec3D a, double s)
 {
@@ -119,7 +105,7 @@ MTVec3D mtDivideVectorScalar (MTVec3D a, double s)
 }
 
 /**
- * Addiert a und b und schreibt das Ergebnis in res.
+ * Adds two vectors and returns a new vector.
  */
 MTVec3D mtAddVectorVector (MTVec3D a, MTVec3D b)
 {
@@ -131,8 +117,7 @@ MTVec3D mtAddVectorVector (MTVec3D a, MTVec3D b)
 }
 
 /**
- * Wandelt eine Zahl (Grad) in Radiant.
- * deg muss im Wertebereich 0..359 liegen!
+ * Converts degree into radiant. Degree must be in the range of 0..359.
  */
 double mtDegToRad (double deg)
 {
@@ -140,8 +125,7 @@ double mtDegToRad (double deg)
 }
 
 /**
- * Wandelt eine Zahl (Radiant) in Grad um.
- * deg muss im Wertebereich 0..PI liegen!
+ * Converts radiant to degree.
  */
 double mtRadToDeg (double rad)
 {
@@ -149,8 +133,7 @@ double mtRadToDeg (double rad)
 }
 
 /**
- * Berechnet den Winkel zwischen zwei Vektoren und gibt das Ergebnis in
- * ° zurück (nicht radiant!).
+ * Calculates the angle between two vectors (not radiant!).
  */
 double mtAngleVectorVector (MTVec3D a, MTVec3D b)
 {
