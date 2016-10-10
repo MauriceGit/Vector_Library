@@ -58,7 +58,7 @@ MTVec3D mtNormVector3D(MTVec3D vector)
  */
 MTVec3D mtCrossProduct3D(MTVec3D a, MTVec3D b)
 {
-    MTVec3D product = mtToVector3D((a.x*b.z - a.z*b.y),
+    MTVec3D product = mtToVector3D((a.y*b.z - a.z*b.y),
                       (a.z*b.x - a.x*b.z),
                       (a.x*b.y - a.y*b.x));
     return product;
